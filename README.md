@@ -1,4 +1,4 @@
-# SDDSTools
+# Tools
 
 ## About the Code
 This is coded using TypeScript, so any changes should be made in the ts folder script file **"main.ts"**, then compiled using `tsc` to generate the output **"main.js"** javascript file.  
