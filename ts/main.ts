@@ -13,7 +13,7 @@
 //
 // Data Version: update this when the data file changes to ensure the data 
 // is reloaded on clients side
-const dv = "20241212.1";
+const dv = "20241212.2";
 const lastUpdated = "2024-12-12";
 var activeTerm = "2247";
 
@@ -21,7 +21,7 @@ var activeTerm = "2247";
 const dataFileRoot = "https://seneca-tools.github.io/Tools/assets/";
 
 // The fields we care about in the CSV file (assuming these field names will not change)
-const CSVFieldName : string[] = [ 'Subject', 'Catalog', 'Section', 'Facil ID', 'Meeting Start',
+const CSVFieldName : string[] = [ 'Subject', 'Catalog', 'Section', 'Class Stat', 'Cap Enrl', 'Facil ID', 'Meeting Start',
     'Meeting End', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Mode', 'Campus', 'Instructor Name'];
 
 // Index of CSVFieldName in CSV file (used to map the CSV fields to the object fields)
@@ -31,7 +31,7 @@ var CSVFieldIndex : number[] = [];
 
 // Object fields mapped to the CSV fields
 // These fields are used to create the object array (clientData)
-const OBJFieldName : string[] = ['subject', 'catalog', 'section', 'room', 'timeStart',
+const OBJFieldName : string[] = ['subject', 'catalog', 'section', 'classStat', 'capEnrol', 'room', 'timeStart',
     'timeEnd', 'isMon', 'isTue', 'isWed', 'isThur', 'isFri', 'mode', 'campus', 'last', 'first'];
 
 // Overview of how the data is mapped
@@ -72,10 +72,10 @@ type ClientData =
     catalog: string;
     section: string;
     // classNum: string;
-    // classStat: string;
-    // capEnrol: string;
+    classStat: string;
+    capEnrol: string;
     // totEnrol: string;
-    // roomCap: string;
+    //roomCap: string;
     room: string;
     timeStart: string;
     timeEnd: string;
@@ -232,8 +232,8 @@ function loadData()
                     catalog: rawFields[CSVFieldIndex[OBJFieldName.indexOf('catalog')]].replace(/ /g, ''),
                     section: rawFields[CSVFieldIndex[OBJFieldName.indexOf('section')]],
                     //classNum: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classNum')]],
-                    //classStat: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classStat')]],
-                    //capEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('capEnrol')]],
+                    classStat: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classStat')]],
+                    capEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('capEnrol')]],
                     //totEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('totEnrol')]],
                     //roomCap: rawFields[CSVFieldIndex[OBJFieldName.indexOf('roomCap')]],
                     room: rawFields[CSVFieldIndex[OBJFieldName.indexOf('room')]],
