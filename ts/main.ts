@@ -17,8 +17,8 @@ const dv = "20240908.1";
 const lastUpdated = "2024-09-08";
 var activeTerm = "2247";
 
-// Data File: CSV file containing the data to be used by the app
-const dataFileRoot = "https://github.senecapolytechnic.ca/pages/cameron-gray/sddsTools/assets/";
+// Data File: CSV file containing the data to be used by the app (https://seneca-tools.github.io/Tools/assets)
+const dataFileRoot = "https://seneca-tools.github.io/Tools/assets/";
 
 // The fields we care about in the CSV file (assuming these field names will not change)
 const CSVFieldName : string[] = ['Course ID', 'Course Administrator', 'Subject', 'Catalog', 'Section',
