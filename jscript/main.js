@@ -19,20 +19,16 @@ var activeTerm = "2247";
 // Data File: CSV file containing the data to be used by the app (https://seneca-tools.github.io/Tools/assets)
 const dataFileRoot = "https://seneca-tools.github.io/Tools/assets/";
 // The fields we care about in the CSV file (assuming these field names will not change)
-const CSVFieldName = ['Course ID', 'Course Administrator', 'Subject', 'Catalog', 'Section',
-    'Class Nbr', 'Class Stat', 'Cap Enrl', 'Tot Enrl', 'Room Capacity', 'Facil ID', 'Meeting Start',
-    'Meeting End', 'Mon', 'Tues', 'Wed', 'Thurs',
-    'Fri', 'Mode', 'Campus', 'Instructor Name'];
+const CSVFieldName = ['Subject', 'Catalog', 'Section', 'Facil ID', 'Meeting Start',
+    'Meeting End', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Mode', 'Campus', 'Instructor Name'];
 // Index of CSVFieldName in CSV file (used to map the CSV fields to the object fields)
 // This array is populated when the data file is loaded
 // Fields can be in any order in the source CSV file
 var CSVFieldIndex = [];
 // Object fields mapped to the CSV fields
 // These fields are used to create the object array (clientData)
-const OBJFieldName = ['courseID', 'courseAdmin', 'subject', 'catalog', 'section',
-    'classNum', 'classStat', 'capEnrol', 'totEnrol', 'roomCap', 'room', 'timeStart',
-    'timeEnd', 'isMon', 'isTue', 'isWed', 'isThur',
-    'isFri', 'mode', 'campus', 'last', 'first'];
+const OBJFieldName = ['subject', 'catalog', 'section', 'room', 'timeStart',
+    'timeEnd', 'isMon', 'isTue', 'isWed', 'isThur', 'isFri', 'mode', 'campus', 'last', 'first'];
 // Object Data: All records are stored in this array (on average between 600-1500 records)
 var clientData = [];
 // Weekly Schedule: 16 periods per day (08:00-), 5 days per week
@@ -120,16 +116,16 @@ function loadData() {
                 rawFields = row.split('\t');
                 // A single record
                 const clientDataRec = {
-                    courseID: rawFields[CSVFieldIndex[OBJFieldName.indexOf('courseID')]],
-                    courseAdmin: rawFields[CSVFieldIndex[OBJFieldName.indexOf('courseAdmin')]],
+                    //courseID: rawFields[CSVFieldIndex[OBJFieldName.indexOf('courseID')]],
+                    //courseAdmin: rawFields[CSVFieldIndex[OBJFieldName.indexOf('courseAdmin')]],
                     subject: rawFields[CSVFieldIndex[OBJFieldName.indexOf('subject')]],
                     catalog: rawFields[CSVFieldIndex[OBJFieldName.indexOf('catalog')]].replace(/ /g, ''),
                     section: rawFields[CSVFieldIndex[OBJFieldName.indexOf('section')]],
-                    classNum: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classNum')]],
-                    classStat: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classStat')]],
-                    capEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('capEnrol')]],
-                    totEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('totEnrol')]],
-                    roomCap: rawFields[CSVFieldIndex[OBJFieldName.indexOf('roomCap')]],
+                    //classNum: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classNum')]],
+                    //classStat: rawFields[CSVFieldIndex[OBJFieldName.indexOf('classStat')]],
+                    //capEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('capEnrol')]],
+                    //totEnrol: rawFields[CSVFieldIndex[OBJFieldName.indexOf('totEnrol')]],
+                    //roomCap: rawFields[CSVFieldIndex[OBJFieldName.indexOf('roomCap')]],
                     room: rawFields[CSVFieldIndex[OBJFieldName.indexOf('room')]],
                     timeStart: rawFields[CSVFieldIndex[OBJFieldName.indexOf('timeStart')]],
                     timeEnd: rawFields[CSVFieldIndex[OBJFieldName.indexOf('timeEnd')]],
