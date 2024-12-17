@@ -2,4 +2,7 @@
 *.ps1
 assets/New2*.csv
 assets/*.xlsm
+assets/038.csv
+assets/039.csv
+assets/102.csv
 OldData/
