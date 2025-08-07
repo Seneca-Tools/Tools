@@ -1,7 +1,7 @@
 //
 // Description:         Main JavaScript file for SDDS Tools
 // Author:              Cameron Gray
-// Last Modified Date:  2025-05-11
+// Last Modified Date:  2025-08-07
 // Last Modified By:    Cameron Gray
 // Version:             1.5
 // 
@@ -13,7 +13,7 @@
 //
 // Data Version: update this when the data file changes to ensure the data 
 // is reloaded on clients side
-const dv = "20250807.1";
+const dv = "20250807.2";
 const lastUpdated = "2025-08-07";
 var activeTerm = "2257";
 // Data File: CSV file containing the data to be used by the app (https://seneca-tools.github.io/Tools/assets)
