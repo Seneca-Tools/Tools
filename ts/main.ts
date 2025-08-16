@@ -13,7 +13,7 @@
 //
 // Data Version: update this when the data file changes to ensure the data 
 // is reloaded on clients side
-const dv = "20250816.1";
+const dv = "20250816.2";
 const lastUpdated = "2025-08-16";
 var activeTerm = "2257";
 
