@@ -44,7 +44,13 @@ window.onload = function () {
         document.getElementById("lastUpdated").innerHTML = "Data Updated: " + lastUpdated;
         if ((tryClientData == null || tryCSVFieldIndex == null) ||
             (tryCSVFieldIndex == '[]' || tryClientData.length === 0) || tryDataVersion != dv) {
-            loadData();
+            //loadData();
+            // If the data file is not found in local storage or the data version has changed, clear the data cache and attempt to load the data again
+            if (loadData() == 0) {
+                clearCacheByPrefixId(parseInt(activeTerm.substring(0, 4)));
+                // attempt loading again
+                loadData();
+            }
         }
         else {
             CSVFieldIndex = JSON.parse(tryCSVFieldIndex);
@@ -57,11 +63,33 @@ function dataSourceChange() {
     activeTerm = document.getElementById("termData-select").value;
     const tryClientData = window.localStorage.getItem(activeTerm);
     if ((tryClientData == null || tryClientData.length === 0)) {
-        loadData();
+        //loadData();
+        if (loadData() == 0) {
+            clearCacheByPrefixId(parseInt(activeTerm.substring(0, 4)));
+            // attempt loading again
+            loadData();
+        }
     }
     else {
         clientData = JSON.parse(tryClientData);
     }
+}
+// Clear Cache by Prefix ID: Remove all localStorage items that is not the specific prefix term code (first 4 characters)
+function clearCacheByPrefixId(targetId) {
+    // Get all keys currently in localStorage
+    const keys = Object.keys(localStorage);
+    for (const key of keys) {
+        // 1. Take the first 4 characters
+        const prefix = key.substring(0, 4);
+        // 2. Convert to an integer
+        const parsedId = parseInt(prefix, 10);
+        // 3. Check if it is a valid number and matches your condition
+        if (!isNaN(parsedId) && parsedId != targetId) {
+            localStorage.removeItem(key);
+        }
+    }
+    // clear error field:
+    document.getElementById('debugInfo').innerHTML = ' ';
 }
 // Load the data file into the clientData array
 // This function is called when the data file is not found in local storage or
@@ -162,7 +190,11 @@ function loadData() {
         window.localStorage.setItem("dataVersion", dv);
     }).catch(function (err) {
         dbgInfo('Error: Failed to read file: ' + err);
+        clearCacheByPrefixId(parseInt(activeTerm.substring(0, 4)));
+        // attempt loading again
+        loadData();
     });
+    return 1;
 }
 // Quick and dirty function to get a unique colour based on the value passed in
 // This is used to colour the object in the schedule and legend
